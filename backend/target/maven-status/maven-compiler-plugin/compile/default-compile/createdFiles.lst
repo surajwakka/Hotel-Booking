@@ -1,0 +1,8 @@
+com\staywise\hotel\model\Booking.class
+com\staywise\hotel\HotelBookingApplication.class
+com\staywise\hotel\controller\HotelController.class
+com\staywise\hotel\model\Hotel.class
+com\staywise\hotel\repository\BookingRepository.class
+com\staywise\hotel\repository\HotelRepository.class
+com\staywise\hotel\config\DataSeeder.class
+com\staywise\hotel\controller\HotelController$BookingRequest.class
