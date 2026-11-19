@@ -1,0 +1,44 @@
+services:
+  - type: web
+    name: staywise-api
+    runtime: docker
+    rootDir: backend
+    plan: free
+    healthCheckPath: /api/hotels
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DB_HOST
+        fromDatabase:
+          name: staywise-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: staywise-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: staywise-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: staywise-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: staywise-db
+          property: password
+  - type: web
+    name: staywise-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://${{staywise-api.host}}/api
+databases:
+  - name: staywise-db
+    plan: free
+    databaseName: staywise
+    user: staywise
