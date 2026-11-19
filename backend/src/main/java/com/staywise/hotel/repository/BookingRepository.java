@@ -1,3 +1,8 @@
 package com.staywise.hotel.repository;
-import com.staywise.hotel.model.Booking;import org.springframework.data.jpa.repository.JpaRepository;import java.util.List;
-public interface BookingRepository extends JpaRepository<Booking,Long>{List<Booking> findByEmailIgnoreCaseOrderByIdDesc(String email);}
+import com.staywise.hotel.model.Booking;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+public interface BookingRepository extends JpaRepository<Booking,Long> {
+ List<Booking> findByEmailIgnoreCaseOrderByIdDesc(String email);
+ boolean existsByHotelId(Long hotelId);
+}
